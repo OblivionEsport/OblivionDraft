@@ -1,7 +1,7 @@
 # OblivionDraft
 Small Pick and Bans tracker for stream written in go 
 
-![img]([readme_img/img1.png](https://raw.githubusercontent.com/UrbsKali/OblivionDraft/main/readme_img/img1.png))
+![img](https://raw.githubusercontent.com/UrbsKali/OblivionDraft/main/readme_img/img1.png)
 > Used during 2023 TWC, (more [here](https://twitch.tv/kckitt_))
 ## Installation
 - Download latest release [here](https://github.com/UrbsKali/OblivionDraft/releases/latest)
