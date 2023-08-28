@@ -1,0 +1,38 @@
+{
+  "teams": [
+    {
+      "name": "cxggj",
+      "tag": "TTT",
+      "color": "#000000",
+      "score": "4"
+    },
+    {
+      "name": "cxggj 1",
+      "tag": "TTT",
+      "color": "#000000",
+      "score": "4"
+    },
+    {
+      "name": "cxggj 2",
+      "tag": "TTT",
+      "color": "#000000",
+      "score": "4"
+    },
+    {
+      "name": "Tenacity",
+      "tag": "TNY",
+      "color": "#17de38",
+      "score": "5"
+    },
+    {
+      "name": "Les Coutons",
+      "tag": "LCT",
+      "color": "#ccbb00",
+      "score": "4"
+    }
+  ],
+  "selected": [
+    "Tenacity",
+    "Les Coutons"
+  ]
+}

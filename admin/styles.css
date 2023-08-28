@@ -1,0 +1,128 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.page-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.page-title {
+  margin-bottom: 20px;
+}
+
+.team-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 20px;
+}
+
+@media screen and (min-width: 730px) {
+  .team-container {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.team {
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-tag {
+  width: 35px;
+  text-transform: uppercase;
+}
+
+.team-name,
+.team-score,
+.team-tag {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.team-color {
+  width: 30px;
+  height: 30px;
+  border: none;
+}
+
+.team-color:focus {
+  outline: none;
+}
+
+.team-name::placeholder,
+.team-score::placeholder,
+.team-tag::placeholder {
+  color: #999;
+}
+
+.team-name:focus,
+.team-score:focus,
+.team-tag:focus {
+  outline: none;
+  border-bottom: 2px solid #007bff;
+}
+
+/* ... your previous styles ... */
+
+.team-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  align-items: center;
+  gap: 20px;
+}
+
+.team-control {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.team-control:hover {
+  background-color: #0056b3;
+}
+
+.team-name {
+  padding: 5px;
+  font-size: 16px;
+  width: -webkit-fill-available;
+
+}
+
+
+.team-save-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+#btnSelect:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
