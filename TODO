@@ -1,3 +1,3 @@
-TO IMPROVE PERFOMANCE : LOCAL /draft/summoner/info
+TO IMPROVE PERFOMANCE : LOCAL /draft/summoner/info (maybe)
 LISIBILITY : admin and overlay js split 
 admin: main.js refactor fetch to use async await
