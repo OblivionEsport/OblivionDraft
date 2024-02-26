@@ -44,7 +44,7 @@
 .player {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     /*aspect-ratio: auto 985 / 581;*/
     background-color: rgba(43, 43, 43, 0.1);
     background-blend-mode: multiply;
@@ -57,8 +57,11 @@
 
 .player h2 {
     color: white;
-    text-align: center;
+    text-align: left; 
     font-family: 'LoL-Bold';
+}
+#team2 .player h2 {
+    text-align: right;
 }
 
 .player h4 {

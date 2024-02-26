@@ -117,7 +117,7 @@ async function showInfo() {
 
         players[i].style.backgroundImage = `url('${data['splashUrl']}')`;
         players[i].children[0].innerText = data['summonerName'];
-        players[i].children[1].innerText = data['championName'];
+        //players[i].children[1].innerText = data['championName'];
     }
 }
 function setActive(id) {
@@ -174,7 +174,10 @@ async function setupTeamInfo() {
     selected = await getTeamInfo();
     for (let i = 0; i < teamName.length; i++) {
         teamName[i].getElementsByTagName("h1")[0].innerText = selected[i]["name"];
+
+        // REMOVE COMMENT FOR PRODUCTION ------------------------------------------------------------------------------------------------------------------------------------------------
         //teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
+
         //teamName[i].children[1].innerText = selected[i]["tag"];
         score[i].innerText = selected[i]["score"];
         //teamLogo[i].style.backgroundImage = `url('${selected[i]["logo"]}')`;
