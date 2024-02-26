@@ -127,18 +127,18 @@ function setActive(id) {
     if (id > 4) id -= 5;
     for (let i = 0; i < activePlayerTeam.children.length - 2; i++) {
         if (i == id) {
-            sizeArray += "2fr ";
+            sizeArray += "1.8fr ";
         } else {
             sizeArray += "1fr ";
         }
     }
-    activePlayerTeam.style.gridTemplateRows = `.5fr .5fr ${sizeArray}`;
+    activePlayerTeam.style.gridTemplateRows = `.5fr ${sizeArray} .5fr`;
 }
 function resetTeam(team) {
     if (team == 1)
-        team1[0].parentElement.style.gridTemplateRows = ".5fr .5fr 1fr 1fr 1fr 1fr 1fr";
+        team1[0].parentElement.style.gridTemplateRows = ".5fr 1fr 1fr 1fr 1fr 1fr .5fr";
     else
-        team2[0].parentElement.style.gridTemplateRows = ".5fr .5fr 1fr 1fr 1fr 1fr 1fr";
+        team2[0].parentElement.style.gridTemplateRows = ".5fr 1fr 1fr 1fr 1fr 1fr .5fr";
 }
 
 async function getTeamInfo() {
@@ -173,7 +173,8 @@ async function setupTeamInfo() {
 
     selected = await getTeamInfo();
     for (let i = 0; i < teamName.length; i++) {
-        teamName[i].children[0].innerText = selected[i]["name"];
+        teamName[i].getElementsByTagName("h1")[0].innerText = selected[i]["name"];
+        //teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
         //teamName[i].children[1].innerText = selected[i]["tag"];
         score[i].innerText = selected[i]["score"];
         //teamLogo[i].style.backgroundImage = `url('${selected[i]["logo"]}')`;

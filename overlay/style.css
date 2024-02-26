@@ -37,7 +37,7 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 2px;
-    grid-template-rows: .5fr .5fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: .5fr 1fr 1fr 1fr 1fr 1fr .5fr;
     transition: all .5s ease-in;
 }
 
@@ -51,6 +51,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-position-y: -20px;
     /*background-image: url("img/notfound.png");*/
 }
 
@@ -98,12 +99,18 @@
     font-size: xx-large;
     color: white;
     font-family: 'LoL-Bold';
+    visibility: hidden;
 }
 
 .teamName h1 {
     color: white;
     font-family: 'LoL-Bold';
     margin: auto;
+}
+.teamName img {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
 }
 
 .teamName {
@@ -131,8 +138,9 @@
     height: 100vh;
     filter: blur(10px);
     box-shadow: -10vmin 10vmin 0 rgba(255, 255, 255, 0.07);
+    width: 500px;
 }
-
+/*
 .shade2 .blob {
     animation: AnimateBlobTwo 8s ease-out infinite alternate;
 }
@@ -141,7 +149,7 @@
 .shade1 .blob {
     animation: AnimateBlobOne 10s ease-in infinite alternate;
 }
-
+*/
 
 @keyframes AnimateBlobOne {
     0% {
