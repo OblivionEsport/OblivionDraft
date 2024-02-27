@@ -11,6 +11,8 @@ let is_connected = false;
 let ref_timer = 0;
 let current_timer = 0;
 
+let teams_img_exist = [false, false];
+
 async function setup() {
     let rawData = await fetch("http://localhost/draft/full")
     if (rawData.status != 200) {
@@ -168,19 +170,36 @@ async function getTeamInfo() {
 async function setupTeamInfo() {
     let teamName = document.getElementsByClassName("teamName");
     let blob = document.getElementsByClassName("blob");
-    //let teamLogo = document.getElementsByClassName("teamLogo");
     let score = document.getElementsByClassName("score");
 
     selected = await getTeamInfo();
     for (let i = 0; i < teamName.length; i++) {
         teamName[i].getElementsByTagName("h1")[0].innerText = selected[i]["name"];
 
-        teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
+        if (teams_img_exist[i] == true){
+            teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
+        } else {
+            teamName[i].getElementsByTagName("img")[0].src = `./img/_notfound.png`;
+        }
 
-        //teamName[i].children[1].innerText = selected[i]["tag"];
+
         score[i].innerText = selected[i]["score"];
-        //teamLogo[i].style.backgroundImage = `url('${selected[i]["logo"]}')`;
         blob[i].style.backgroundColor = `${selected[i]["color"]}33`;
+        
+    }
+}
+async function checkImg(){
+    let selected = await getTeamInfo();
+    for (let i = 0; i < 2; i++){
+        let img = new Image();
+        
+        img.src = `./teams_img/${selected[i]["tag"]}.png`;
+        img.onload = function() {
+            teams_img_exist[i] = true;
+        }
+        img.onerror = function() {
+            teams_img_exist[i] = false;
+        }
     }
 }
 
@@ -247,6 +266,10 @@ setInterval(() => {
         updateCounter();
     } else {
         setup();
+        setupTeamInfo();
+        checkImg();
+    }
+    if (document.getElementsByClassName("teamName")[0].getElementsByTagName("h1")[0].innerText == "TEAM 1") {
         setupTeamInfo();
     }
 }, 1000);
