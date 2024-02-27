@@ -1,17 +1,28 @@
 package routes
 
 import (
+	"fmt"
 	"oblivion/draft/api"
 	"oblivion/draft/middleware"
 	"oblivion/draft/models"
+	"time"
 
+	"github.com/ImOlli/go-lcu/lcu"
 	"github.com/gofiber/fiber/v2"
 )
 
 func DraftRoutes(app *fiber.App) {
-	g, err := models.NewGetter()
-	if err != nil {
-		panic(err)
+	var g models.Getter
+	var err error
+	for {
+		g, err = models.NewGetter()
+		if err != nil && !lcu.IsProcessNotFoundError(err) {
+			panic(err)
+		} else if err == nil {
+			break
+		}
+		fmt.Println("LeagueClient not found, retrying in 2 second")
+		time.Sleep(2 * time.Second)
 	}
 
 	r := app.Group("/draft")

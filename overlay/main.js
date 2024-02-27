@@ -175,8 +175,7 @@ async function setupTeamInfo() {
     for (let i = 0; i < teamName.length; i++) {
         teamName[i].getElementsByTagName("h1")[0].innerText = selected[i]["name"];
 
-        // REMOVE COMMENT FOR PRODUCTION ------------------------------------------------------------------------------------------------------------------------------------------------
-        //teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
+        teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
 
         //teamName[i].children[1].innerText = selected[i]["tag"];
         score[i].innerText = selected[i]["score"];

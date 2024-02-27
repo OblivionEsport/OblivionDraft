@@ -140,40 +140,5 @@
 .blob {
     height: 100vh;
     filter: blur(10px);
-    box-shadow: -10vmin 10vmin 0 rgba(255, 255, 255, 0.07);
     width: 500px;
-}
-/*
-.shade2 .blob {
-    animation: AnimateBlobTwo 8s ease-out infinite alternate;
-}
-
-
-.shade1 .blob {
-    animation: AnimateBlobOne 10s ease-in infinite alternate;
-}
-*/
-
-@keyframes AnimateBlobOne {
-    0% {
-        border-radius: 0% 4% 5% 0% / 67% 37% 56% 34%;
-        width: 370px;
-    }
-
-    100% {
-        border-radius: 0% 31% 9% 0% / 20% 86% 16% 79%;
-        width: 350px;
-    }
-}
-
-@keyframes AnimateBlobTwo {
-    0% {
-        border-radius: 5% 0% 0% 10% / 67% 89% 56% 9%;
-        width: 370px;
-    }
-
-    100% {
-        border-radius: 20% 0% 0% 5% / 41% 37% 10% 34%;
-        width: 350px;
-    }
 }
