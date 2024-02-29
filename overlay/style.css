@@ -111,9 +111,8 @@
     margin: auto;
 }
 .teamName img {
-    width: 128px;
     height: 128px;
-    object-fit: cover;
+    width: auto;
 }
 
 .teamName {

@@ -103,6 +103,8 @@ async function updateCounter() {
 
 function formatTime(sec) {
     sec_ = Math.floor(sec % 60);
+    if (sec_ < 10)
+        sec_ = `0${sec_}`;
     min = Math.floor(sec / 60);
     if (min > 0)
         return `${min}:${sec_}`;
