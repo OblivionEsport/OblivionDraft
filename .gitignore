@@ -26,3 +26,4 @@ go.work
 data_test.json 
 
 teams.json
+*.zip
