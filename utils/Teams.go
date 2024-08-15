@@ -89,3 +89,24 @@ func SetSelected(name1, name2 string) error {
 	}
 	return nil
 }
+
+func GetMatchID() (string, error) {
+	teams, err := models.ReadTeamsFile()
+	if err != nil {
+		return "", err
+	}
+	return teams.MatchID, nil
+}
+
+func SetMatchID(matchID string) error {
+	teams, err := models.ReadTeamsFile()
+	if err != nil {
+		return err
+	}
+	teams.MatchID = matchID
+	err = models.SaveTeamsFile(teams)
+	if err != nil {
+		return err
+	}
+	return nil
+}

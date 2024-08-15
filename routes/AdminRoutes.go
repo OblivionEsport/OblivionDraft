@@ -16,4 +16,7 @@ func AdminRoutes(app *fiber.App) {
 
 	teams.Post("/add", api.TeamsAdd)
 	teams.Post("/selected", api.SetTeamsSelected)
+
+	r.Get("/match/id", api.MatchID)
+	r.Post("/match/id", api.MatchID)
 }

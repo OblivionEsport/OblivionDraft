@@ -10,6 +10,14 @@
 </head>
 
 <body>
+  <div class="floating">
+
+    <button class="floating-button btn" onclick="loadTeamFromDB()" aria-details="Download">☁️
+    </button>
+    <span class="tooltip">
+      Fetch Teams info from DB
+    </span>
+  </div>
   <div class="page-container">
     <h1 class="page-title">Team Scores</h1>
     <div class="team-container">
@@ -53,6 +61,13 @@
     <div class="team-select">
       <button class="team-select-button team-control" onclick="select()" id="btnSelect" disabled="true">Select
         Teams</button>
+    </div>
+
+    <div class="team-container">
+      <div class="team">
+        <h3>Match ID</h3>
+        <input type="text" name="matchId" id="matchId" class="team-score" placeholder="EUW1_7076709372" onchange="updateMatchId(this)">
+      </div>
     </div>
 
   </div>

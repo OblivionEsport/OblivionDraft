@@ -179,7 +179,7 @@ async function setupTeamInfo() {
     for (let i = 0; i < teamName.length; i++) {
         teamName[i].getElementsByTagName("h1")[0].innerText = selected[i].tag;
 
-        teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
+        teamName[i].getElementsByTagName("img")[0].src = `${selected[i]["logoUrl"]}`;
 
 
         score[i].innerText = selected[i]["score"];

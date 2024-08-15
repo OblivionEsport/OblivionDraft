@@ -6,15 +6,17 @@ import (
 )
 
 type Team struct {
-	Name  string `json:"name"`
-	Tag   string `json:"tag"`
-	Color string `json:"color"`
-	Score string `json:"score"`
+	Name    string `json:"name"`
+	Tag     string `json:"tag"`
+	Color   string `json:"color"`
+	Score   string `json:"score"`
+	LogoUrl string `json:"logoUrl"`
 }
 
 type TeamFile struct {
 	Teams    []Team   `json:"teams"`
 	Selected []string `json:"selected"`
+	MatchID  string   `json:"matchID"`
 }
 
 func ReadTeamsFile() (TeamFile, error) {

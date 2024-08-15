@@ -13,7 +13,7 @@ func Setup() {
 			panic(err)
 		}
 		defer file.Close()
-		file.WriteString("{\"teams\": [],\"selected\": []}")
+		file.WriteString("{\"teams\": [],\"selected\": [], matchID:\"\"}")
 	}
 
 	//download the latest version of the overlay and admin
@@ -34,5 +34,21 @@ func Setup() {
 		}
 		defer file.Close()
 		file.WriteString("API_KEY=" + api_key)
+
+		println("Please enter your Supabase URL: (leave empty if you don't have one)")
+		var supabase_url string
+		_, err = fmt.Scanln(&supabase_url)
+		if err != nil {
+			panic(err)
+		}
+		file.WriteString("\nSUPABASE_URL=" + supabase_url)
+
+		println("Please enter your Supabase Key: (leave empty if you don't have one)")
+		var supabase_key string
+		_, err = fmt.Scanln(&supabase_key)
+		if err != nil {
+			panic(err)
+		}
+		file.WriteString("\nSUPABASE_KEY=" + supabase_key)
 	}
 }

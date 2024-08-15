@@ -77,8 +77,16 @@ async function setupTeam() {
     let selected = await getTeamInfo();
     teamOneName.innerHTML = selected[0].tag;
     teamTwoName.innerHTML = selected[1].tag;
-    teamOneLogo.style.backgroundImage = `url('teams_img/${selected[0].tag}.png')`;
-    teamTwoLogo.style.backgroundImage = `url('teams_img/${selected[1].tag}.png')`;
+    teamOneLogo.style.backgroundImage = `url(${selected[0]["logoUrl"]})`;
+    teamTwoLogo.style.backgroundImage = `url(${selected[1]["logoUrl"]})`;
+    if (match.teamStats[0].win) {
+        teamOneName.innerHTML += " WIN";
+        teamTwoName.innerHTML += " LOSS";
+    }
+    else {
+        teamOneName.innerHTML += " WIN";
+        teamTwoName.innerHTML += " LOSS";
+    }
 }
 
 async function getTeamInfo() {
@@ -106,7 +114,10 @@ async function getTeamInfo() {
 }
 
 
-let match = await fetch("/riot/match/EUW1_7076709372/endgame").then(res => res.json());
+let resp = await fetch('/admin/match/id');
+let gameID = await resp.text();
+console.log(gameID);
+let match = await fetch(`/riot/match/${gameID}/endgame`).then(res => res.json());
 let teamOneTotal = 0;
 let teamTwoTotal = 0;
 let label = []
@@ -225,8 +236,6 @@ new Chart(ctx, {
             },
             y: {
                 display: true,
-                suggestedMin: -2000,
-                suggestedMax: 6000,
                 grid: {
                     display: true,
                     color: function (context) {

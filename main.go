@@ -20,6 +20,7 @@ func serve() {
 	routes.AdminRoutes(app)
 	//routes.LcuRoutes(app)
 	routes.RiotApiRoutes(app)
+	routes.SupabaseRoutes(app)
 
 	app.Listen(":80")
 }

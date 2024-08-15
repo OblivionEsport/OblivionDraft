@@ -2,6 +2,11 @@ const teamNameSelectOne = document.getElementById('team1');
 const teamNameSelectTwo = document.getElementById('team2');
 const btnSelect = document.getElementById('btnSelect');
 
+const matchIdInput = document.getElementById('matchId');
+fetch('/admin/match/id')
+    .then(resp => resp.text())
+    .then(text => matchIdInput.value = text);
+
 function changeSelect(select) {
     if (select.value === 'New') {
         emptyTeamSettings(select);
@@ -34,7 +39,8 @@ async function saveTeamSettings(el) {
         name: inputs[0].value,
         score: inputs[1].value,
         tag: inputs[2].value.toUpperCase(),
-        color: inputs[3].value
+        color: inputs[3].value,
+        logoUrl: "",
     };
     let response;
     try {
@@ -131,4 +137,102 @@ function loadTeamSettings(el, i) {
             });
         });
 
+}
+
+async function loadTeamFromDB() {
+    // create a popup asking for tournament name with a select box
+    // fetch the tournaments from the server
+
+    // fetch the teams from the server
+    let response = await fetch('/db/tournaments');
+    let tournaments = await response.json();
+
+    // create the popup
+    let popupContainer = document.createElement('div')
+    popupContainer.classList = "popupContainer"
+    let popup = document.createElement('div');
+    popup.className = 'popup';
+    let select = document.createElement('select');
+    select.id = 'tournamentSelect';
+    select.className = "team-name";
+    let option = document.createElement('option');
+    select.appendChild(option);
+    tournaments.forEach(tournament => {
+        let option = document.createElement('option');
+        option.value = tournament.id;
+        option.text = tournament.title;
+        select.appendChild(option);
+    });
+    popup.appendChild(select);
+    let button = document.createElement('button');
+    button.innerText = 'Load';
+    button.classList = "btn";
+    button.onclick = loadTeams;
+    popup.appendChild(button);
+    popupContainer.append(popup)
+    document.body.appendChild(popupContainer);
+}
+
+async function loadTeams() {
+    // get the popup select value
+    let select = document.getElementById('tournamentSelect');
+    let tournamentId = select.value;
+    // fetch the teams from the server
+    let response = await fetch('/db/teams/' + tournamentId);
+    let teams = await response.json();
+
+    let body = [];
+    // add the teams to the server
+    teams.forEach((team) => {
+        body.push({
+            name: team.name,
+            score: "0",
+            tag: team.tag,
+            color: "#000000",
+            logoUrl: team.logo_url
+        })
+    });
+
+    await fetch("/admin/teams/add/?many=true", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    }
+    )
+
+    // remove the popup
+    let popup = document.getElementsByClassName('popupContainer')[0];
+    document.body.removeChild(popup);
+    // reload the select
+    teamNameSelectOne.innerHTML = '<option value="New">New</option>';
+    teamNameSelectTwo.innerHTML = '<option value="New">New</option>';
+    fetch('/admin/teams/full')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(team => {
+                const option = document.createElement('option');
+                option.value = team.name;
+                option.text = team.name;
+                teamNameSelectOne.appendChild(option);
+                teamNameSelectTwo.appendChild(option.cloneNode(true));
+            });
+        });
+}
+
+async function updateMatchId(el) {
+    let matchId = el.value;
+    let resp = await fetch('/admin/match/id', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: matchId
+    })
+    if (resp.ok) {
+        console.log('Match ID updated successfully!');
+    } else {
+        console.error('Failed to update match ID.');
+    }
 }
