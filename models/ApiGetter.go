@@ -3,6 +3,7 @@ package models
 import (
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 )
 
@@ -30,18 +31,21 @@ func (g ApiGetter) Get(url string) string {
 	r, err := http.NewRequest(http.MethodGet, fmt.Sprintf("https://%s.api.riotgames.com%s", g.Region, url), nil)
 	if err != nil {
 		fmt.Println("Error creating request")
-		panic(err)
+		log.Print(err)
+		return ""
 	}
 	r.Header.Add("X-Riot-Token", g.ApiKey)
 	resp, err := g.Client.Do(r)
 	if err != nil {
 		fmt.Println("Error sending request")
-		panic(err)
+		log.Print(err)
+		return ""
 	}
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		fmt.Println("Error reading response")
-		panic(err)
+		log.Print(err)
+		return ""
 	}
 	return string(resBody)
 }

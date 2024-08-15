@@ -3,6 +3,7 @@ package api
 import (
 	"encoding/json"
 	"oblivion/draft/models"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -14,8 +15,22 @@ func EndGameStats(c *fiber.Ctx) error {
 	rawMatch := g.Getf("/lol/match/v5/matches/%s/", matchID)
 	m := models.Match{}
 	t := models.MatchTimeline{}
+
+	if rawTimeline == "" || rawMatch == "" {
+		return c.Status(404).JSON(fiber.Map{
+			"error": "Connection to Riot API failed",
+		})
+	}
+
 	json.Unmarshal([]byte(rawTimeline), &t)
 	json.Unmarshal([]byte(rawMatch), &m)
+
+	if t.Metadata.MatchID == "" || len(m.Info.Teams) == 0 || len(m.Info.Teams[0].Bans) == 0 || len(m.Info.Teams[1].Bans) == 0 {
+		return c.Status(404).JSON(fiber.Map{
+			"error": "Match not found",
+		})
+	}
+
 	r := models.MatchEndGame{
 		MatchID:  t.Metadata.MatchID,
 		Duration: m.Info.GameDuration,
@@ -99,7 +114,7 @@ func EndGameStats(c *fiber.Ctx) error {
 						r.TeamStats[1].ElderDragon++
 					}
 				}
-				if event.MonsterType == "BARONS" {
+				if strings.Split(event.MonsterType, "_")[0] == "BARON" {
 					if event.KillerID > 0 && event.KillerID < 6 { // Team 1
 						r.TeamStats[0].Barons++
 					} else {

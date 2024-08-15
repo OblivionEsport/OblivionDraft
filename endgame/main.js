@@ -264,3 +264,13 @@ new Chart(ctx, {
         }
     },
 });
+
+
+setInterval(() => {
+    // if game id change 
+    fetch('/admin/match/id').then(res => res.text()).then(id => {
+        if (id != gameID) {
+            window.location.reload();
+        }
+    });
+}, 5000);

@@ -24,3 +24,5 @@ go.work
 
 # Test data
 data_test.json 
+
+teams.json
