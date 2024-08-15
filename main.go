@@ -18,7 +18,8 @@ func serve() {
 
 	routes.StaticRoutes(app)
 	routes.AdminRoutes(app)
-	routes.DraftRoutes(app)
+	//routes.LcuRoutes(app)
+	routes.RiotApiRoutes(app)
 
 	app.Listen(":80")
 }

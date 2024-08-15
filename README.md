@@ -14,6 +14,7 @@ Small Pick and Bans tracker for stream written in go
 - Execute `draft.exe`
 - connect the overlay to OBS using web url : http://localhost/
 - Change teams settings at http://localhost/admin
+- Show endgame stats at http://localhost/endgame
 - When you join a draft, the overlay will change accordingly
 
 ## Update

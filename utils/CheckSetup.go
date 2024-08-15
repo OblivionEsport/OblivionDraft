@@ -4,19 +4,23 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
+
+	"github.com/joho/godotenv"
 )
 
 func CheckSetup() {
 	// This function is used to check if the setup is correct
+	filename := filepath.Base(os.Args[0])
 
 	fmt.Println("Starting up...")
 	// check if the files directory exists
 	if _, err := os.Stat("./overlay"); os.IsNotExist(err) {
-		log.Fatal("Overlay directory does not exist, try running 'draft setup'")
+		log.Fatalf("Overlay directory does not exist, try running '%s setup'", filename)
 	}
 	// check if the ui directory exists
 	if _, err := os.Stat("./admin"); os.IsNotExist(err) {
-		log.Fatal("Admin directory does not exist, try running 'draft setup'")
+		log.Fatalf("Admin directory does not exist, try running '%s setup'", filename)
 	}
 	// check if the config file exists
 	if _, err := os.Stat("./teams.json"); os.IsNotExist(err) {
@@ -28,6 +32,13 @@ func CheckSetup() {
 		defer file.Close()
 		file.WriteString("{\"teams\": [],\"selected\": []}")
 		log.Print("Teams file created")
+	}
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Error loading .env file, try running '%s setup'", filename)
+	}
+	if _, check := os.LookupEnv("API_KEY"); !check {
+		log.Fatalf("Invalid .env file, missing API_KEY value, try running '%s setup'", filename)
 	}
 
 }

@@ -9,7 +9,7 @@ import (
 )
 
 func DraftActions(c *fiber.Ctx) error {
-	g := c.Locals("getter").(models.Getter)
+	g := c.Locals("getter").(models.LcuGetter)
 	s, err := utils.GetActions(g)
 	if err != nil {
 		log.Println(err)

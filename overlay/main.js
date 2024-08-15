@@ -177,7 +177,7 @@ async function setupTeamInfo() {
 
     selected = await getTeamInfo();
     for (let i = 0; i < teamName.length; i++) {
-        teamName[i].getElementsByTagName("h1")[0].innerText = selected[i]["name"];
+        teamName[i].getElementsByTagName("h1")[0].innerText = selected[i].tag;
 
         teamName[i].getElementsByTagName("img")[0].src = `./teams_img/${selected[i]["tag"]}.png`;
 

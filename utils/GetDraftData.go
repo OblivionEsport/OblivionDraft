@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func GetDraft(g models.Getter) (models.Session, error) {
+func GetDraft(g models.LcuGetter) (models.Session, error) {
 	rawDraft := g.Get("/lol-champ-select/v1/session")
 	if rawDraft[2] == 'e' {
 		time.Sleep(1 * time.Second)

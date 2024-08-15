@@ -8,7 +8,7 @@ import (
 )
 
 func DraftFull(c *fiber.Ctx) error {
-	g := c.Locals("getter").(models.Getter)
+	g := c.Locals("getter").(models.LcuGetter)
 	s, err := utils.GetDraft(g)
 	if err != nil {
 		return c.SendStatus(404)

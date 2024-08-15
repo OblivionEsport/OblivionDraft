@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func DraftMiddleware(g models.LcuGetter) fiber.Handler {
+func RiotMiddleware(g models.ApiGetter) fiber.Handler {
 	return func(c *fiber.Ctx) error {
 		c.Locals("getter", g)
 		return c.Next()

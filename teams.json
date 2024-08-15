@@ -1,6 +1,20 @@
 {
   "teams": [
+    {
+      "name": "Les Clowns Teubés",
+      "tag": "LCT",
+      "color": "#000000",
+      "score": "5"
+    },
+    {
+      "name": "Strong Side Top",
+      "tag": "SST",
+      "color": "#000000",
+      "score": "2"
+    }
   ],
   "selected": [
+    "Les Clowns Teubés",
+    "Strong Side Top"
   ]
 }

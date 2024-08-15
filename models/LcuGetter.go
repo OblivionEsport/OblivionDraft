@@ -11,21 +11,21 @@ import (
 	"github.com/ImOlli/go-lcu/lcu"
 )
 
-type Getter struct {
+type LcuGetter struct {
 	Client    *http.Client
 	AuthToken string
 	BaseURL   string
 }
 
-func NewGetter() (Getter, error) {
+func NewLcuClient() (LcuGetter, error) {
 	info, err := lcu.FindLCUConnectInfo()
 
 	if err != nil {
 		if lcu.IsProcessNotFoundError(err) {
-			return Getter{}, err
+			return LcuGetter{}, err
 		}
 
-		return Getter{}, err
+		return LcuGetter{}, err
 	}
 
 	log.Printf("LeagueClient is running on port %s and you can authenticate with following token: %s", info.Port, info.AuthToken)
@@ -37,10 +37,10 @@ func NewGetter() (Getter, error) {
 	}
 	Client := &http.Client{Transport: tr}
 	BaseURL := fmt.Sprintf("https://127.0.0.1:%s", info.Port)
-	return Getter{Client, AuthToken, BaseURL}, nil
+	return LcuGetter{Client, AuthToken, BaseURL}, nil
 }
 
-func (g Getter) Get(url string) string {
+func (g LcuGetter) Get(url string) string {
 
 	r, err := http.NewRequest(http.MethodGet, fmt.Sprintf("%s%s", g.BaseURL, url), nil)
 	if err != nil {

@@ -5,7 +5,7 @@ import (
 	"oblivion/draft/models"
 )
 
-func GetTimeLeft(g models.Getter) (int, error) {
+func GetTimeLeft(g models.LcuGetter) (int, error) {
 	draft, err := GetDraft(g)
 	if err != nil {
 		return -1, errors.New("getTimeLeft: could not get draft")

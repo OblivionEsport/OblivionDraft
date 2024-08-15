@@ -1,6 +1,9 @@
 package utils
 
-import "os"
+import (
+	"fmt"
+	"os"
+)
 
 func Setup() {
 	// check if the teams file exists
@@ -15,4 +18,21 @@ func Setup() {
 
 	//download the latest version of the overlay and admin
 	UpdateOverlay()
+
+	// check if the .env file exists
+	if _, err := os.Stat(".env"); os.IsNotExist(err) {
+		// ask the user their API key and write it to the .env file
+		println("Please enter your Riot API key:")
+		var api_key string
+		_, err := fmt.Scanln(&api_key)
+		if err != nil {
+			panic(err)
+		}
+		file, err := os.Create(".env")
+		if err != nil {
+			panic(err)
+		}
+		defer file.Close()
+		file.WriteString("API_KEY=" + api_key)
+	}
 }

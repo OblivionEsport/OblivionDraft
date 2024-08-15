@@ -9,7 +9,7 @@ import (
 )
 
 func DraftTimer(c *fiber.Ctx) error {
-	g := c.Locals("getter").(models.Getter)
+	g := c.Locals("getter").(models.LcuGetter)
 	s, err := utils.GetTimeLeft(g)
 	if err != nil {
 		log.Println(err)

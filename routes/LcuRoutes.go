@@ -11,11 +11,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func DraftRoutes(app *fiber.App) {
-	var g models.Getter
+func LcuRoutes(app *fiber.App) {
+	var g models.LcuGetter
 	var err error
 	for {
-		g, err = models.NewGetter()
+		g, err = models.NewLcuClient()
 		if err != nil && !lcu.IsProcessNotFoundError(err) {
 			panic(err)
 		} else if err == nil {
@@ -28,6 +28,7 @@ func DraftRoutes(app *fiber.App) {
 	r := app.Group("/draft")
 	r.Use(middleware.DraftMiddleware(g))
 
+	//  ----------- Draft Routes ----------- //
 	r.Get("/full", api.DraftFull)
 	r.Get("/actions", api.DraftActions)
 	r.Get("/bans", api.DraftBans)

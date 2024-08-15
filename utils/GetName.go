@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func GetName(g models.Getter, summonerID string) string {
+func GetName(g models.LcuGetter, summonerID string) string {
 	if summonerID == "0" || summonerID == "" {
 		return "Bot"
 	}

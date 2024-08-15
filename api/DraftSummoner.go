@@ -10,7 +10,7 @@ import (
 )
 
 func DraftSummoner(c *fiber.Ctx) error {
-	g := c.Locals("getter").(models.Getter)
+	g := c.Locals("getter").(models.LcuGetter)
 	id, err := strconv.Atoi(c.Params("id"))
 	if err != nil {
 		log.Println(err)
