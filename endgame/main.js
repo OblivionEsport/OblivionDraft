@@ -116,6 +116,17 @@ async function getTeamInfo() {
 
 let resp = await fetch('/admin/match/id');
 let gameID = await resp.text();
+if (gameID == "Internal Server Error" || gameID == "") {
+    setInterval(() => {
+        // if game id change 
+        fetch('/admin/match/id').then(res => res.text()).then(id => {
+            if (id != gameID) {
+                window.location.reload();
+            }
+        });
+    }, 5000);
+    throw new Error("Internal Server Error, Match is not 5v5 bans or picks are not done");
+}
 console.log(gameID);
 let match = await fetch(`/riot/match/${gameID}/endgame`).then(res => res.json());
 let teamOneTotal = 0;

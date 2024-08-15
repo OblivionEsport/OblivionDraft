@@ -31,7 +31,7 @@ func CheckSetup() {
 			log.Fatal(err)
 		}
 		defer file.Close()
-		file.WriteString("{\"teams\": [],\"selected\": [], matchID:\"\"}")
+		file.WriteString("{\"teams\": [],\"selected\": [], \"matchID\":\"\"}")
 		log.Print("Teams file created")
 	}
 	err := godotenv.Load(".env")

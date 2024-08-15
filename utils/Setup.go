@@ -13,7 +13,7 @@ func Setup() {
 			panic(err)
 		}
 		defer file.Close()
-		file.WriteString("{\"teams\": [],\"selected\": [], matchID:\"\"}")
+		file.WriteString("{\"teams\": [],\"selected\": [], \"matchID\":\"\"}")
 	}
 
 	//download the latest version of the overlay and admin
