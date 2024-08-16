@@ -110,3 +110,11 @@ func SetMatchID(matchID string) error {
 	}
 	return nil
 }
+
+func ResetTeams() error {
+	err := models.SaveTeamsFile(models.TeamFile{})
+	if err != nil {
+		return err
+	}
+	return nil
+}

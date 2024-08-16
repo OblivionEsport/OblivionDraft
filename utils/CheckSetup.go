@@ -14,14 +14,8 @@ func CheckSetup() {
 	filename := filepath.Base(os.Args[0])
 
 	fmt.Println("Starting up...")
-	if _, err := os.Stat("./overlay"); os.IsNotExist(err) {
-		log.Fatalf("Overlay directory does not exist, try running '%s setup'", filename)
-	}
-	if _, err := os.Stat("./admin"); os.IsNotExist(err) {
-		log.Fatalf("Admin directory does not exist, try running '%s setup'", filename)
-	}
-	if _, err := os.Stat("./endgame"); os.IsNotExist(err) {
-		log.Fatalf("EndGame directory does not exist, try running '%s setup'", filename)
+	if _, err := os.Stat("./ui/"); os.IsNotExist(err) {
+		log.Fatalf("UI directory does not exist, try running '%s setup'", filename)
 	}
 	// check if the config file exists
 	if _, err := os.Stat("./teams.json"); os.IsNotExist(err) {

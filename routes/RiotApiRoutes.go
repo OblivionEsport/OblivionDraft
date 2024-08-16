@@ -16,7 +16,7 @@ func RiotApiRoutes(app *fiber.App) {
 		panic(err)
 	}
 
-	r := app.Group("/riot")
+	r := app.Group("/api/riot")
 	r.Use(middleware.RiotMiddleware(g))
 
 	r.Get("/puuid/:name/:tag", api.APIGetPuuid)

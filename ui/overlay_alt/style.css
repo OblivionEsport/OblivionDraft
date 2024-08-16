@@ -1,0 +1,193 @@
+:root {
+    --border-color: #6b696d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "LoL";
+    src:
+        local("lol-regular"),
+        url("font/lol-regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "LoL-Bold";
+    src: url("font/lol-bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "LoL-Medium";
+    src: url("font/lol-medium.otf") format("opentype");
+}
+
+/* TEAM STYLE */
+
+.time_div {
+    position: absolute;
+    top: 0;
+    left: 45vw;
+    width: 10vw;
+}
+
+.new {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 10px 5em;
+    width: 100vw;
+    height: 100vh;
+}
+
+#team1,
+#team2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 2px;
+    grid-template-rows: .5fr 1fr 1fr 1fr 1fr 1fr .5fr;
+    transition: all .5s ease-in;
+}
+
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*aspect-ratio: auto 985 / 581;*/
+    background-color: rgba(43, 43, 43, 0.1);
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-y: -20px;
+    border-bottom: solid 1px var(--border-color);
+    /*background-image: url("img/notfound.png");*/
+}
+
+.pos_icon {
+    position: absolute;
+    left: calc(50vw - 35px);
+    margin-top: 50px;
+    width: 70px;
+    height: 70px;
+    background-size: 55px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background-color: #0000003b;
+    background-blend-mode: normal;
+}
+
+.jungle {
+    background-image: url("img/Jungle_icon_WR.webp");
+}
+
+.top {
+    background-image: url("img/Top_icon.webp");
+}
+
+.mid {
+    background-image: url("img/Middle_icon.webp");
+}
+
+.support {
+    background-image: url("img/Support_icon_WR.webp");
+}
+
+.bot {
+    background-image: url("img/Bottom_icon.webp");
+}
+
+
+.player h2 {
+    color: white;
+    text-align: right;
+    font-family: 'LoL-Bold';
+}
+
+.player .infos {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    padding: 0 3em;
+}
+
+#team2 .player .infos {
+    align-items: start;
+    text-align: left;
+
+}
+
+.player h4 {
+    color: white;
+    font-family: 'LoL-Medium';
+}
+
+
+.bans {
+    background-color: rgba(43, 43, 43, 0.2);
+    background-blend-mode: multiply;
+    aspect-ratio: 1 / 1;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 70px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background-image: url("img/notfound_square.png");
+}
+
+#bansTeam1,
+#bansTeam2 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2px;
+    grid-template-rows: 1fr;
+    align-items: end;
+}
+
+#bansTeam1 {
+    margin-right: 30px;
+}
+
+#bansTeam2 {
+    margin-left: 30px;
+}
+
+/* Match Info */
+
+#timer {
+    color: white;
+    font-family: 'LoL-Bold';
+    font-size: xxx-large;
+}
+
+.score {
+    font-size: xx-large;
+    color: white;
+    font-family: 'LoL-Bold';
+    visibility: hidden;
+}
+
+.teamName h1 {
+    color: white;
+    font-family: 'LoL-Bold';
+    margin: auto;
+}
+
+.teamName img {
+    height: 128px;
+    width: auto;
+}
+
+.teamName {
+    display: flex;
+    height: 100%;
+}

@@ -7,7 +7,7 @@ import (
 )
 
 func AdminRoutes(app *fiber.App) {
-	r := app.Group("/admin")
+	r := app.Group("/api/admin")
 	teams := r.Group("/teams")
 
 	teams.Get("/full", api.TeamsFull)

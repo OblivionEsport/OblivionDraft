@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Team Scores</title>
+</head>
+
+<body>
+  <div class="floating">
+
+    <button class="floating-button btn" onclick="loadTeamFromDB()" aria-details="Download">☁️
+    </button>
+    <span class="tooltip">
+      Fetch Teams info from DB
+    </span>
+  </div>
+  <div class="page-container">
+    <h1 class="page-title">Team Scores</h1>
+    <div class="team-container">
+      <div class="team A">
+        <div class="team-controls">
+          <select class="team-name" id="team1" onchange="changeSelect(this)">
+            <option value="New">New</option>
+          </select>
+          <div class="team-save-option">
+            <button class="team-control" onclick="RemoveTeamSettings(this)">-</button>
+            <button class="team-control" onclick="saveTeamSettings(this)">+</button>
+          </div>
+        </div>
+        <input type="text" class="team-score" id="name" placeholder="Name" autocomplete="off">
+        <input type="text" class="team-score" placeholder="Score" id="score">
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+          <input type="text" class="team-tag" placeholder="Tag" id="tag">
+          <input type="color" class="team-color" id="color">
+        </div>
+      </div>
+
+      <div class="team B">
+        <div class="team-controls">
+          <select class="team-name" id="team2" onchange="changeSelect(this)">
+            <option value="New">New</option>
+          </select>
+          <div class="team-save-option">
+            <button class="team-control" onclick="RemoveTeamSettings(this)">-</button>
+            <button class="team-control" onclick="saveTeamSettings(this)">+</button>
+          </div>
+        </div>
+        <input type="text" class="team-score" id="name" placeholder="Name" autocomplete="off">
+        <input type="text" class="team-score" placeholder="Score" id="score">
+        <div style="display: flex;flex-direction: row;justify-content: space-between;">
+          <input type="text" class="team-tag" placeholder="Tag" id="tag">
+          <input type="color" class="team-color" id="color">
+        </div>
+      </div>
+    </div>
+
+    <div class="team-select">
+      <button class="team-select-button team-control" onclick="select()" id="btnSelect" disabled="true">Select
+        Teams</button>
+    </div>
+
+    <div class="team-container">
+      <div class="team">
+        <h3>Match ID</h3>
+        <input type="text" name="matchId" id="matchId" class="team-score" placeholder="EUW1_7076709372" onchange="updateMatchId(this)">
+      </div>
+    </div>
+
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+
+</html>

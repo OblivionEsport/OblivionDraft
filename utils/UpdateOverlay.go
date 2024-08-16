@@ -10,74 +10,56 @@ import (
 )
 
 func UpdateOverlay() {
-	err := os.RemoveAll("admin")
-	if err != nil {
-		log.Fatal(err)
+
+	// check if the folder exists - Legacy version
+	if _, err := os.Stat("admin"); !os.IsNotExist(err) {
+		err := os.RemoveAll("admin")
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
-	err = os.RemoveAll("overlay")
+	if _, err := os.Stat("overlay"); !os.IsNotExist(err) {
+		err := os.RemoveAll("overlay")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	if _, err := os.Stat("endgame"); !os.IsNotExist(err) {
+		err := os.RemoveAll("endgame")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	// check if the folder exists - New version
+	if _, err := os.Stat("ui"); !os.IsNotExist(err) {
+		err := os.RemoveAll("ui")
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
+
+	err := DownloadFile("ui.zip", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/ui.zip")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = DownloadFile("admin.zip", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/admin.zip")
+	err = archiver.Unarchive("ui.zip", "tmp_ui")
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = DownloadFile("overlay.zip", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/overlay.zip")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = DownloadFile("endgame.zip", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/endgame.zip")
+	err = os.Remove("ui.zip")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = archiver.Unarchive("admin.zip", "tmp_admin")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = archiver.Unarchive("overlay.zip", "tmp_overlay")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = archiver.Unarchive("endgame.zip", "tmp_endgame")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.Remove("admin.zip")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.Remove("overlay.zip")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.Remove("endgame.zip")
+	err = os.Rename("tmp_ui/ui", "ui")
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = os.Rename("tmp_admin/admin", "admin")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.Rename("tmp_overlay/overlay", "overlay")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.Rename("tmp_endgame/endgame", "endgame")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.RemoveAll("tmp_admin")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.RemoveAll("tmp_overlay")
-	if err != nil {
-		log.Fatal(err)
-	}
-	err = os.RemoveAll("tmp_endgame")
+	err = os.RemoveAll("tmp_ui")
 	if err != nil {
 		log.Fatal(err)
 	}

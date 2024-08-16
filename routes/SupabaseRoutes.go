@@ -10,7 +10,7 @@ import (
 )
 
 func SupabaseRoutes(app *fiber.App) {
-	r := app.Group("/db")
+	r := app.Group("/api/db")
 
 	supabaseUrl := os.Getenv("SUPABASE_URL")
 	supabaseKey := os.Getenv("SUPABASE_KEY")

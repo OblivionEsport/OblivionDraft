@@ -25,7 +25,7 @@ func LcuRoutes(app *fiber.App) {
 		time.Sleep(2 * time.Second)
 	}
 
-	r := app.Group("/draft")
+	r := app.Group("/api/draft")
 	r.Use(middleware.DraftMiddleware(g))
 
 	//  ----------- Draft Routes ----------- //

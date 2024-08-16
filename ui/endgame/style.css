@@ -1,0 +1,235 @@
+:root {
+    --table-bar-size: 400px;
+    --bans-size: 42px;
+    --player-icon-size: 50px;
+}
+
+@font-face {
+    font-family: "Beaufort";
+    src:
+        local("lol-regular"),
+        url("/endgame/font/BeaufortforLOL-Heavy.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Spiegel";
+    src: url('/endgame/font/spiegel-bold.ttf');
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Beaufort', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 2fr 1fr 50px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+body>div {
+    width: 100%;
+    height: 100%;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-even {
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.player_icon {
+    width: var(--player-icon-size);
+    height: var(--player-icon-size);
+    margin: 5px 0;
+    background-image: url('/img/notfound_square.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.playerStats table {
+    border-collapse: collapse;
+    border-spacing: 0px !important;
+    padding: 0;
+}
+
+.playerStats table tr th {
+    padding: 0;
+    font-family: 'Spiegel', sans-serif;
+}
+
+.flex.bar {
+    margin: 0;
+    height: 40px;
+    width: var(--table-bar-size);
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.flex.bar>div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.flex.bar>div.left {
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.bar_one {
+    background-color: #6586ff;
+}
+
+.bar_two {
+    background-color: #ff8553;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}
+.bar p {
+    padding: 0 15px;
+    text-align: right;
+}
+.bar .left p {
+    text-align: left;
+}
+
+.flex.bar>div>div {
+    width: 10px;
+    height: 20px;
+    transition: width 0.5s ease-in;
+}
+
+.Teams {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.team {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 37.5%;
+    height: 100%;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    background-image: url('/img/_notfound.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+h3{
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}
+
+.time {
+    margin-top: -20px;
+    width: 150px;
+}
+
+.time p {
+    font-family: 'Spiegel', sans-serif;
+}
+
+.bans {
+    flex-direction: row;
+    align-items: center;
+}
+
+.ban {
+    width: var(--bans-size);
+    height: var(--bans-size);
+    background-image: url('/img/notfound_square.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.teamStats {
+    height: 100%;
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.teamStats table {
+    border-collapse: collapse;
+    border-spacing: 0px !important;
+    padding: 0;
+    height: 80%;
+    width: 400px;
+}
+
+.one {
+    font-size: 25px;
+    color: #6586ff;
+    font-family: 'Spiegel', sans-serif;
+}
+
+.two {
+    color: #ff8553;
+    font-size: 25px;
+    font-family: 'Spiegel', sans-serif;
+
+}
+
+.name {
+    font-weight: 900;
+    padding: 0 15px;
+    font-size: 60px;
+    min-width: 315px;
+    font-family: 'Beaufort', sans-serif;
+}
+.name.two {
+    text-align: right;
+}
+
+.goldGraph {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.goldGraph > div {
+    width: 1300px;
+    height: 300px;
+}
