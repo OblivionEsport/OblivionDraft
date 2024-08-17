@@ -121,13 +121,11 @@ async function showInfo() {
         let data = await getPlayerInfo(id, champID);
 
         players[i].style.backgroundImage = `url('${data['splashUrl']}')`;
-        players[i].children[0].children[0].innerText = data['summonerName'];
-        players[i].children[0].children[1].innerText = data['championName'];
-        //players[i].children[1].innerText = data['championName'];
+        players[i].children[0].innerText = data['summonerName'];
+        //players[i].children[0].children[1].innerText = data['championName'];
     }
 }
 function setActive(id) {
-    return
     let activePlayer = players[id];
     let activePlayerTeam = activePlayer.parentElement;
     sizeArray = ""
