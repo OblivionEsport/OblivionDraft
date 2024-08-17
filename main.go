@@ -10,7 +10,6 @@ import (
 )
 
 func serve() {
-
 	app := fiber.New()
 	// use Logger middleware provided by Fiber
 	//app.Use(logger.New())
@@ -26,12 +25,15 @@ func serve() {
 }
 
 func main() {
+	utils.ConfigLogger()
 	if len(os.Args) > 1 && os.Args[1] == "setup" {
 		utils.Setup()
 	} else if len(os.Args) > 1 && os.Args[1] == "update" {
 		utils.UpdateOverlay()
 	} else {
 		utils.CheckSetup()
+		// if an error occurs, log the error to error.log
 		serve()
+
 	}
 }

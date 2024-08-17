@@ -27,3 +27,5 @@ data_test.json
 
 teams.json
 *.zip
+*.log
+logs/

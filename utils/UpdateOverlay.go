@@ -10,7 +10,6 @@ import (
 )
 
 func UpdateOverlay() {
-
 	// check if the folder exists - Legacy version
 	if _, err := os.Stat("admin"); !os.IsNotExist(err) {
 		err := os.RemoveAll("admin")
