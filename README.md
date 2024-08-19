@@ -1,10 +1,14 @@
 # OblivionDraft
 Small Stream utils (draft, endgame) written in go 
 
-![image](https://github.com/UrbsKali/OblivionDraft/assets/22664596/304e785f-6cb9-4d9b-a51a-6d4dad195c31)
+| [Draft Overlay](http://localhost/ui/overlay/) | [Endgame Stats Overlay](http://localhost/ui/endgame/) | 
+| :-----: | :------: | 
+| ![draft](https://github.com/user-attachments/assets/f20a350a-1c70-4a5d-a34d-5d35dfaf58c4) | ![endgame_stats_overlay](https://github.com/user-attachments/assets/5d433be9-25e5-49c7-bd15-7a919a167167) | 
+| [Admin Screen](http://localhost/ui/admin/) |  [Alt Draft Overlay](http://localhost/ui/overlay_alt/) |
+| ![image](https://github.com/user-attachments/assets/e5ff6a05-dcf5-4330-a756-ae41971b77e3)| ![localhost_](https://github.com/user-attachments/assets/5942afcf-bfae-4020-863c-b290d9f83f24)| 
 
 
-> Used during 2023 TWC, 2024 TI (more [here](https://oblivion-esport.fr/))
+> Used during 2023 TWC, 2024 TI, 2024 TWC (more [here](https://oblivion-esport.fr/) and on [KcKitt_](https://twitch.tv/kckitt_) channel )
 
 ## Features
 - Endgame Stats Overlay (Riot API key needed)
@@ -19,10 +23,10 @@ Small Stream utils (draft, endgame) written in go
 - Double click on `update.exe`
 - You're good to go 👌
 ## Usage
-- Execute `draft.exe` (if first time, open it in a console to see potential error)
-- connect the overlay to OBS using web url : http://localhost/ui/overlay (or overlay_alt if you want)
-- Change teams settings at http://localhost/ui/admin
-- Show endgame stats at http://localhost/ui/endgame
+- Execute `draft.exe`
+- connect the overlay to OBS using web url : http://localhost/ui/overlay/ (or overlay_alt if you want)
+- Change teams settings at http://localhost/ui/admin/
+- Show endgame stats at http://localhost/ui/endgame/
 - When you join a draft, the overlay will change accordingly
 
 ## Update
