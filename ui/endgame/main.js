@@ -79,13 +79,14 @@ async function setupTeam() {
     teamTwoName.innerHTML = selected[1].tag;
     teamOneLogo.style.backgroundImage = `url(${selected[0]["logoUrl"]})`;
     teamTwoLogo.style.backgroundImage = `url(${selected[1]["logoUrl"]})`;
+    console.log(match.teamStats[0].win)
     if (match.teamStats[0].win) {
         teamOneName.innerHTML += " WIN";
         teamTwoName.innerHTML += " LOSS";
     }
     else {
-        teamOneName.innerHTML += " WIN";
-        teamTwoName.innerHTML += " LOSS";
+        teamTwoName.innerHTML += " WIN";
+        teamOneName.innerHTML += " LOSS";
     }
 }
 
