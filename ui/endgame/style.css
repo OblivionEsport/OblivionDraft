@@ -2,6 +2,8 @@
     --table-bar-size: 400px;
     --bans-size: 42px;
     --player-icon-size: 50px;
+    --team-two-color: #eb0808;
+    --team-one-color: #6586ff;
 }
 
 @font-face {
@@ -95,11 +97,11 @@ body>div {
 }
 
 .bar_one {
-    background-color: #6586ff;
+    background-color: var(--team-one-color);
 }
 
 .bar_two {
-    background-color: #ff8553;
+    background-color: var(--team-two-color);
 }
 
 p {
@@ -198,12 +200,12 @@ h3{
 
 .one {
     font-size: 25px;
-    color: #6586ff;
+    color: var(--team-one-color);
     font-family: 'Spiegel', sans-serif;
 }
 
 .two {
-    color: #ff8553;
+    color: var(--team-two-color);
     font-size: 25px;
     font-family: 'Spiegel', sans-serif;
 
