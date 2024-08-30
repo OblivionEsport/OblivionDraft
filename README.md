@@ -3,7 +3,8 @@ Small Stream utils (draft, endgame) written in go
 
 | [Draft Overlay](http://localhost/ui/overlay/) | [Endgame Stats Overlay](http://localhost/ui/endgame/) | 
 | :-----: | :------: | 
-| ![draft](https://github.com/user-attachments/assets/f20a350a-1c70-4a5d-a34d-5d35dfaf58c4) | ![endgame_stats_overlay](https://github.com/user-attachments/assets/5d433be9-25e5-49c7-bd15-7a919a167167) | 
+| ![draft](https://github.com/user-attachments/assets/f20a350a-1c70-4a5d-a34d-5d35dfaf58c4) | ![endgame_stats_overlay](https://github.com/user-attachments/assets/1919c347-7cd9-486d-ab82-53cfe4e05a00)
+) | 
 | [Admin Screen](http://localhost/ui/admin/) |  [Alt Draft Overlay](http://localhost/ui/overlay_alt/) |
 | ![image](https://github.com/user-attachments/assets/e5ff6a05-dcf5-4330-a756-ae41971b77e3)| ![localhost_](https://github.com/user-attachments/assets/5942afcf-bfae-4020-863c-b290d9f83f24)| 
 
