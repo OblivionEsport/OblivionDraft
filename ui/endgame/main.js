@@ -79,7 +79,6 @@ async function setupTeam() {
     teamTwoName.innerHTML = selected[1].tag;
     teamOneLogo.style.backgroundImage = `url(${selected[0]["logoUrl"]})`;
     teamTwoLogo.style.backgroundImage = `url(${selected[1]["logoUrl"]})`;
-    console.log(match.teamStats[0].win)
     if (match.teamStats[0].win) {
         teamOneName.innerHTML += " WIN";
         teamTwoName.innerHTML += " LOSS";
@@ -120,7 +119,7 @@ let gameID = await resp.text();
 if (gameID == "Internal Server Error" || gameID == "") {
     setInterval(() => {
         // if game id change 
-        fetch('//apiadmin/match/id').then(res => res.text()).then(id => {
+        fetch('/api/admin/match/id').then(res => res.text()).then(id => {
             if (id != gameID) {
                 window.location.reload();
             }
@@ -128,7 +127,19 @@ if (gameID == "Internal Server Error" || gameID == "") {
     }, 5000);
     throw new Error("Internal Server Error, Match is not 5v5 bans or picks are not done");
 }
-let match = await fetch(`/api/riot/match/${gameID}/endgame`).then(res => res.json());
+let match = await fetch(`/api/riot/match/${gameID.trim()}/endgame`).then(res => res.json());
+
+if (match.error || match.teamStats == undefined) {
+    setInterval(() => {
+        // if game id change 
+        fetch('/api/admin/match/id').then(res => res.text()).then(id => {
+            if (id != gameID) {
+                window.location.reload();
+            }
+        });
+    }, 5000);
+    throw new Error("Internal Server Error, Match is not 5v5 bans or picks are not done");
+}
 let teamOneTotal = match.teamStats[0].goldFrames[match.teamStats[0].goldFrames.length - 1];
 let teamTwoTotal = match.teamStats[1].goldFrames[match.teamStats[1].goldFrames.length - 1];
 let label = []
@@ -178,10 +189,13 @@ match.individualStats.forEach(async (el) => {
 });
 
 match.teamStats[0].bans.forEach(async (el, index) => {
+    if (el == 0) return
     let playerInfo = await getPlayerInfo(el);
     teamOnebans[index].style.backgroundImage = `url('${playerInfo.iconURL}')`;
 });
 match.teamStats[1].bans.forEach(async (el, index) => {
+    if (el == 0) teamTwobans[index].style.backgroundImage = `url('${playerInfo.iconURL}')`;
+
     let playerInfo = await getPlayerInfo(el);
     teamTwobans[index].style.backgroundImage = `url('${playerInfo.iconURL}')`;
 });

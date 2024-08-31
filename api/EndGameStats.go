@@ -25,10 +25,30 @@ func EndGameStats(c *fiber.Ctx) error {
 	json.Unmarshal([]byte(rawTimeline), &t)
 	json.Unmarshal([]byte(rawMatch), &m)
 
-	if t.Metadata.MatchID == "" || len(m.Info.Teams) == 0 || len(m.Info.Teams[0].Bans) == 0 || len(m.Info.Teams[1].Bans) == 0 {
+	if t.Metadata.MatchID == "" || len(m.Info.Teams) == 0 {
 		return c.Status(404).JSON(fiber.Map{
 			"error": "Match not found",
 		})
+	}
+
+	if len(m.Info.Teams[0].Bans) != 5 || len(m.Info.Teams[1].Bans) != 5 {
+		// fill the gap with 0
+		for i := len(m.Info.Teams[0].Bans) - 1; i < 5; i++ {
+			type Tmp struct {
+				ChampionID int "json:\"championId\""
+			}
+			tmp := Tmp{}
+			tmp.ChampionID = 0
+			m.Info.Teams[0].Bans = append(m.Info.Teams[0].Bans, tmp)
+		}
+		for i := len(m.Info.Teams[1].Bans) - 1; i < 5; i++ {
+			type Tmp struct {
+				ChampionID int "json:\"championId\""
+			}
+			tmp := Tmp{}
+			tmp.ChampionID = 0
+			m.Info.Teams[1].Bans = append(m.Info.Teams[1].Bans, tmp)
+		}
 	}
 
 	r := models.MatchEndGame{

@@ -10,14 +10,14 @@
     font-family: "Beaufort";
     src:
         local("lol-regular"),
-        url("/endgame/font/BeaufortforLOL-Heavy.ttf") format("truetype");
+        url("/ui/endgame/font/BeaufortforLOL-Heavy.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Spiegel";
-    src: url('/endgame/font/spiegel-bold.ttf');
+    src: url('/ui/endgame/font/spiegel-bold.ttf');
 }
 
 body {
@@ -58,7 +58,7 @@ body>div {
     width: var(--player-icon-size);
     height: var(--player-icon-size);
     margin: 5px 0;
-    background-image: url('/img/notfound_square.png');
+    background-image: url('/ui/overlay/img/notfound_square.png');
     background-size: cover;
     background-position: center;
 }
@@ -146,7 +146,7 @@ p {
 .logo {
     width: 100px;
     height: 100px;
-    background-image: url('/img/_notfound.png');
+    background-image: url('/ui/overlay/img/_notfound.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -179,7 +179,7 @@ h3{
 .ban {
     width: var(--bans-size);
     height: var(--bans-size);
-    background-image: url('/img/notfound_square.png');
+    background-image: url('/ui/overlay/img/notfound_square.png');
     background-size: cover;
     background-position: center;
 }
