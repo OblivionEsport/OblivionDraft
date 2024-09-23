@@ -39,7 +39,9 @@ func Setup() {
 		var supabase_url string
 		_, err = fmt.Scanln(&supabase_url)
 		if err != nil {
-			panic(err)
+			if err.Error() != "unexpected newline" {
+				panic(err)
+			}
 		}
 		file.WriteString("\nSUPABASE_URL=" + supabase_url)
 
@@ -47,7 +49,9 @@ func Setup() {
 		var supabase_key string
 		_, err = fmt.Scanln(&supabase_key)
 		if err != nil {
-			panic(err)
+			if err.Error() != "unexpected newline" {
+				panic(err)
+			}
 		}
 		file.WriteString("\nSUPABASE_KEY=" + supabase_key)
 	}
