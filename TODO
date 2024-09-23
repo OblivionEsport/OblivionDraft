@@ -1,5 +1,6 @@
 TO IMPROVE PERFOMANCE : LOCAL /api/draft/summoner/info (maybe)
 LISIBILITY : admin and overlay js split 
 admin: main.js refactor fetch to use async await
+admin: local team logo upload
 overlay: remove unused code (shadow and score)
 idea: GUI

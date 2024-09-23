@@ -26,7 +26,7 @@ func serve() {
 
 	routes.StaticRoutes(app)
 	routes.AdminRoutes(app)
-	//routes.LcuRoutes(app)
+	routes.LcuRoutes(app)
 	routes.RiotApiRoutes(app)
 	routes.SupabaseRoutes(app)
 

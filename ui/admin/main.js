@@ -55,7 +55,7 @@ async function saveTeamSettings(el) {
         });
     } catch (error) {
         console.error('An error occurred:', error);
-        sendToast('Failed to add team.', 'error');
+        sendToast('Failed to add team.', 'alert');
     }
     if (response.ok) {
         console.log('Team added successfully!');
@@ -73,7 +73,7 @@ async function saveTeamSettings(el) {
         }
     } else {
         console.error('Failed to add team.');
-        sendToast('Failed to add team.', 'error');
+        sendToast('Failed to add team.', 'alert');
     }
 }
 
@@ -98,7 +98,7 @@ function RemoveTeamSettings(el) {
                 emptyTeamSettings(selectObj);
             } else {
                 console.error('Failed to delete team.');
-                sendToast('Failed to delete team.', 'error');
+                sendToast('Failed to delete team.', 'alert');
             }
         });
 }
@@ -117,7 +117,7 @@ async function select() {
         sendToast('Teams selected successfully!', 'success');
     } else {
         console.error('Failed to select team.');
-        sendToast('Failed to select team.', 'error');
+        sendToast('Failed to select team.', 'alert');
     }
 }
 
@@ -154,8 +154,15 @@ async function loadTeamFromDB() {
 
     // fetch the teams from the server
     let response = await fetch('/api/db/tournaments');
-    let tournaments = await response.json();
-
+    let tournaments;
+    try {
+        tournaments = await response.json();
+    }
+    catch (error) {
+        console.error('An error occurred:', error);
+        sendToast('Failed to load tournaments. Have you connected supabase?', 'alert');
+        return;
+    }
     // create the popup
     let popupContainer = document.createElement('div')
     popupContainer.classList = "popupContainer"
@@ -245,7 +252,7 @@ async function updateMatchId(el) {
         sendToast('Match ID updated successfully!', 'success');
     } else {
         console.error('Failed to update match ID.');
-        sendToast('Failed to update match ID.', 'error');
+        sendToast('Failed to update match ID.', 'alert');
     }
 }
 

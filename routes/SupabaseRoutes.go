@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"log"
 	"oblivion/draft/api"
 	"oblivion/draft/middleware"
 	"os"
@@ -14,6 +15,12 @@ func SupabaseRoutes(app *fiber.App) {
 
 	supabaseUrl := os.Getenv("SUPABASE_URL")
 	supabaseKey := os.Getenv("SUPABASE_KEY")
+
+	if supabaseUrl == "" || supabaseKey == "" {
+		log.Println("Supabase URL or Key is missing, skipping Supabase routes")
+		return
+	}
+
 	supabase := supa.CreateClient(supabaseUrl, supabaseKey)
 
 	r.Use(middleware.SupabaseMiddleware(supabase))

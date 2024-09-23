@@ -39,7 +39,7 @@ func UpdateOverlay() {
 		}
 	}
 
-	err := DownloadFile("ui.zip", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/ui.zip")
+	err := DownloadFile("ui.zip", "https://github.com/OblivionEsport/OblivionDraft/releases/latest/download/ui.zip")
 	if err != nil {
 		log.Fatal(err)
 	}

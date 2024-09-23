@@ -25,7 +25,7 @@ func _main() {
 	}
 
 	// copy the new draft.exe
-	err = utils.DownloadFile("draft.exe", "https://github.com/Urbskali/oblivionDraft/releases/latest/download/draft.exe")
+	err = utils.DownloadFile("draft.exe", "https://github.com/OblivionEsport/OblivionDraft/releases/latest/download/draft.exe")
 	if err != nil {
 		log.Fatal(err)
 	}
