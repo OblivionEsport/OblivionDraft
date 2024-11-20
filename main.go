@@ -30,6 +30,9 @@ func serve() {
 	routes.RiotApiRoutes(app)
 	routes.SupabaseRoutes(app)
 
+	// start the websocket listener for the game in a goroutine
+	go utils.ConnectAndLogWebSocket("ws://localhost:49122", "game.log")
+
 	app.Listen(":80")
 }
 
@@ -42,6 +45,5 @@ func main() {
 	} else {
 		utils.CheckSetup()
 		serve()
-
 	}
 }

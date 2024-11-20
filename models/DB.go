@@ -17,3 +17,18 @@ type DBTeam struct {
 	TournamentID int    `json:"tournament_id"`
 	CreatedAt    string `json:"created_at"`
 }
+
+type DBMatch struct {
+	ID           int    `json:"id"`
+	TeamOne      int    `json:"team_one"`
+	TeamTwo      int    `json:"team_two"`
+	TournamentID int    `json:"tournament_id"`
+	Date         string `json:"date"`
+	Winner       int    `json:"winner"`
+	Score        string `json:"score"`
+}
+
+type DBStatsEWC struct {
+	MatchID int       `json:"match_id"`
+	Stats   GameState `json:"stats"`
+}
