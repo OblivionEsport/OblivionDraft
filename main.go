@@ -24,9 +24,13 @@ func serve() {
 	app.Get("/metrics", monitor.New())
 	app.Use(recover.New())
 
+	waitLcu := os.Getenv("WAIT_LCU")
+
 	routes.StaticRoutes(app)
 	routes.AdminRoutes(app)
-	routes.LcuRoutes(app)
+	if waitLcu == "true" || waitLcu == "1" || waitLcu == "TRUE" {
+		routes.LcuRoutes(app)
+	}
 	routes.RiotApiRoutes(app)
 	routes.SupabaseRoutes(app)
 
