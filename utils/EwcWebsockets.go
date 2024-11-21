@@ -6,8 +6,8 @@ import (
 	"oblivion/draft/models"
 	"os"
 	"strings"
+	"time"
 
-	"github.com/supabase-community/postgrest-go"
 	supa "github.com/supabase-community/supabase-go"
 
 	"github.com/gorilla/websocket"
@@ -25,9 +25,17 @@ func ConnectAndLogWebSocket(url string, logFileName string) error {
 	logger := log.New(logFile, "", log.LstdFlags)
 
 	// Connect to the WebSocket server
-	conn, _, err := websocket.DefaultDialer.Dial(url, nil)
-	if err != nil {
-		return err
+	var conn *websocket.Conn
+	for {
+		conn, _, err = websocket.DefaultDialer.Dial(url, nil)
+
+		if err != nil {
+			print("Error connecting to WebSocket server, retrying in 2 seconds\n")
+			time.Sleep(2 * time.Second)
+		} else {
+			break
+		}
+
 	}
 	defer conn.Close()
 
@@ -74,13 +82,18 @@ func ConnectAndLogWebSocket(url string, logFileName string) error {
 			}
 
 			// get matchid from the db and save the gamestate to the db
-			// SELECT * FROM public."Matchs" WHERE date <= NOW() AND winner IS NULL ORDER BY date DESC LIMIT 1;
-			var orderDesc = postgrest.OrderOpts{Ascending: false}
-			r, _, err := supabase.From("Matchs").Select("*", "exact", false).Lte("date", "NOW()").Is("winner", "NULL").Order("date", &orderDesc).Single().Execute()
+			r := supabase.Rpc("get_latest_unfinished_match", "exact", nil)
+			if r == "" || r == "null" || r == "[]" {
+				logger.Println("Error getting match from db:", r)
+				continue
+			}
+
+			r = strings.Trim(r, "[]")
 			var data models.DBMatch
-			err = json.Unmarshal(r, &data)
+			err = json.Unmarshal([]byte(r), &data)
 			if err != nil {
-				logger.Println("Error getting match from db:", err)
+				logger.Println("Error parsing match data:", err)
+				logger.Println("Match data:", r)
 			} else if len(r) == 0 {
 				logger.Println("No match found")
 			} else {
