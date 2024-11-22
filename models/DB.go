@@ -32,3 +32,15 @@ type DBStatsEWC struct {
 	MatchID int       `json:"match_id"`
 	Stats   GameState `json:"stats"`
 }
+
+type DBStatsEWCWithTeams struct {
+	MatchID struct {
+		TeamOne struct {
+			LogoUrl string `json:"logo_url"`
+		} `json:"team_one"`
+		TeamTwo struct {
+			LogoUrl string `json:"logo_url"`
+		} `json:"team_two"`
+	} `json:"match_id"`
+	Stats GameState `json:"stats"`
+}

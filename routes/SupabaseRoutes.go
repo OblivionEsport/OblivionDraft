@@ -8,6 +8,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	supa "github.com/nedpals/supabase-go"
+	supa_new "github.com/supabase-community/supabase-go"
 )
 
 func SupabaseRoutes(app *fiber.App) {
@@ -22,9 +23,15 @@ func SupabaseRoutes(app *fiber.App) {
 	}
 
 	supabase := supa.CreateClient(supabaseUrl, supabaseKey)
+	supabase_new, err := supa_new.NewClient(supabaseUrl, supabaseKey, &supa_new.ClientOptions{})
 
-	r.Use(middleware.SupabaseMiddleware(supabase))
+	if err != nil {
+		log.Println("Error creating Supabase client:", err)
+	}
+
+	r.Use(middleware.SupabaseMiddleware(supabase, supabase_new))
 
 	r.Get("/tournaments", api.GetDBTournaments)
 	r.Get("/teams/:tournament_id", api.GetDBTeams)
+	r.Get("/ewc/stats", api.GetDBStats)
 }

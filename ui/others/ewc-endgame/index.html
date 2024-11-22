@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="team">
+            <img src="https://idlcqblimgotmibuednf.supabase.co/storage/v1/object/public/avatars/1846c911-521b-4338-85c5-835132e1765e/teams_r9dcj7llev9q1ynlttyxd.png"
+                alt="">
+            <h1>KMF</h1>
+        </div>
+        <div id="teamScore">
+            <h1>0</h1>
+            <h1 class="timer">FIN</h1>
+            <h1>1</h1>
+        </div>
+        <div class="team">
+            <h1>KMF</h1>
+            <img src="https://idlcqblimgotmibuednf.supabase.co/storage/v1/object/public/avatars/1846c911-521b-4338-85c5-835132e1765e/teams_r9dcj7llev9q1ynlttyxd.png"
+                alt="">
+        </div>
+
+    </div>
+    <table>
+        <thead>
+            <th>Urbanosaurus</th>
+            <th>KcKitt_</th>
+            <th>CreaTVT</th>
+            <th class="spacer"></th>
+            <th>Mascode</th>
+            <th>Comso</th>
+            <th>Zendrox</th>
+        </thead>
+        <tbody>
+            <tr id="score">
+                <td>450</td>
+                <td>450</td>
+                <td>450</td>
+                <td class="spacer"></td>
+                <td>450</td>
+                <td>450</td>
+                <td>450</td>
+            </tr>
+            <tr id="but">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr id="passed">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr id="tir">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr id="arret">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr id="demo">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr id="touche">
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="spacer"></td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </tbody>
+    </table>
+    <script type="module" src="/ui/others/ewc-endgame/main.js"></script>
+</body>
+
+</html>
+
+<style>
+    @font-face {
+        font-family: 'Slenco';
+        src: url("/ui/others/ewc-endgame/Slenco-Black.otf") format('opentype');
+    }
+    #teamScore {
+        display: flex;
+        gap: 6vw;
+        font-weight: bold;
+    }
+    #teamScore h1:nth-child(1) {
+        transform: translateX(.25vw);
+    }
+    
+    #teamScore h1:nth-child(2) {
+        transform: translateX(-.25vw);
+    }
+    
+    #teamScore h1:nth-child(3) {
+        transform: translateX(-.5vw);
+    }
+
+    body {
+        background: url(/ui/others/ewc-endgame/bg.png) center center no-repeat;
+        background-size: cover;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        color: white;
+        font-family: 'Slenco';
+        overflow: hidden;
+    }
+
+    table {
+        width: 75%;
+        margin-left: 4%;
+    }
+
+    td,
+    th {
+        padding: 10px;
+        text-align: center;
+        width: 10vw;
+    }
+
+    tbody tr {
+        height: 9.5vh;
+        font-size: 1.5rem;
+    }
+
+    #score {
+        height: 2vh;
+        /* transform: translateY(0vh); */
+    }
+
+    tbody {
+        transform: translateY(-2vh);
+    }
+
+    #score td {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+
+    thead {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .spacer {
+        width: 15vw !important;
+        padding: 0 !important;
+        max-width: unset !important;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        padding-top: 7vh;
+        margin-left: 5.75vw;
+        width: 72vw;
+        margin-bottom: 10vh;
+    }
+
+    .team {
+        display: flex;
+        align-items: center;
+        gap: 2vw;
+    }
+
+    .team img {
+        width: 4vw;
+        height: 4vw;
+        border-radius: 100%;
+    }
+</style>
