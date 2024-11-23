@@ -34,6 +34,7 @@ type DBStatsEWC struct {
 }
 
 type DBStatsEWCWithTeams struct {
+	ID      int `json:"id"`
 	MatchID struct {
 		TeamOne struct {
 			LogoUrl string `json:"logo_url"`

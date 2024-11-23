@@ -14,7 +14,7 @@ func GetDBStats(c *fiber.Ctx) error {
 
 	var results []models.DBStatsEWCWithTeams
 	desc := postgrest.OrderOpts{Ascending: false}
-	data, _, err := supabase.From("stats_ewc").Select("match_id(team_one(logo_url), team_two(logo_url)), stats", "exact", false).Order("match_id", &desc).Execute()
+	data, _, err := supabase.From("stats_ewc").Select("id, match_id(team_one(logo_url), team_two(logo_url)), stats", "exact", false).Order("id", &desc).Limit(1, "").Execute()
 	if err != nil {
 		return c.Status(500).JSON(fiber.Map{
 			"error": err.Error(),

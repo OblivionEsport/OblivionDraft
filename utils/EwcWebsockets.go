@@ -56,12 +56,13 @@ func ConnectAndLogWebSocket(url string, logFileName string) error {
 		log.Println("Error creating Supabase client:", err)
 	}
 
-	// Listen for messages
+	// Listen for messages, restart if error
 	for {
 		_, message, err := conn.ReadMessage()
 		if err != nil {
 			logger.Println("Error reading message:", err)
-			break
+			logger.Println("Reconnecting to WebSocket server")
+			return ConnectAndLogWebSocket(url, logFileName)
 		}
 
 		messageString := string(message)
@@ -82,15 +83,15 @@ func ConnectAndLogWebSocket(url string, logFileName string) error {
 			}
 
 			// get matchid from the db and save the gamestate to the db
+			var data models.DBMatch
 			r := supabase.Rpc("get_latest_unfinished_match", "exact", nil)
 			if r == "" || r == "null" || r == "[]" {
 				logger.Println("Error getting match from db:", r)
-				continue
+				data.ID = 71
+			} else {
+				r = strings.Trim(r, "[]")
+				err = json.Unmarshal([]byte(r), &data)
 			}
-
-			r = strings.Trim(r, "[]")
-			var data models.DBMatch
-			err = json.Unmarshal([]byte(r), &data)
 			if err != nil {
 				logger.Println("Error parsing match data:", err)
 				logger.Println("Match data:", r)

@@ -20,7 +20,7 @@
             <h1>1</h1>
         </div>
         <div class="team">
-            <h1>KMF</h1>
+            <h1 style="text-align: end;">KMF</h1>
             <img src="https://idlcqblimgotmibuednf.supabase.co/storage/v1/object/public/avatars/1846c911-521b-4338-85c5-835132e1765e/teams_r9dcj7llev9q1ynlttyxd.png"
                 alt="">
         </div>
@@ -112,21 +112,36 @@
         font-family: 'Slenco';
         src: url("/ui/others/ewc-endgame/Slenco-Black.otf") format('opentype');
     }
+
+    .team h1 {
+        width: 300px;
+    }
+
     #teamScore {
         display: flex;
         gap: 6vw;
         font-weight: bold;
     }
+
     #teamScore h1:nth-child(1) {
-        transform: translateX(.25vw);
+        font-size: 2rem;
+        width: 30px !important;
+        text-align: center;
+        transform: translateX(1.5vw);
     }
-    
+
     #teamScore h1:nth-child(2) {
-        transform: translateX(-.25vw);
+        width: 75px !important;
+        text-align: center;
+
     }
-    
+
     #teamScore h1:nth-child(3) {
-        transform: translateX(-.5vw);
+        font-size: 2rem;
+        width: 30px !important;
+        text-align: center;
+        transform: translateX(-1.5vw);
+
     }
 
     body {
@@ -155,7 +170,7 @@
 
     tbody tr {
         height: 9.5vh;
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     #score {
@@ -168,13 +183,13 @@
     }
 
     #score td {
-        font-size: 1.25rem;
+        font-size: 1.75rem;
         font-weight: bold;
     }
 
 
     thead {
-        font-size: 1.5rem;
+        font-size: 2.25rem;
         font-weight: bold;
     }
 
@@ -187,10 +202,10 @@
     .header {
         display: flex;
         justify-content: space-between;
-        padding-top: 7vh;
+        padding-top: 8vh;
         margin-left: 5.75vw;
         width: 72vw;
-        margin-bottom: 10vh;
+        margin-bottom: 11vh;
     }
 
     .team {

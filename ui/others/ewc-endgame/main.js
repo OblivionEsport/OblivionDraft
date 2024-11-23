@@ -22,7 +22,8 @@ function setPlayerStats(playerId = 0, stats = {}) {
 }
 
 function setPlayerName(playerId = 0, name = "") {
-    // Set the player name
+    // Set the player name, ascii only
+    name = name.replace(/[^\x00-\x7F]/g, "");
     usernameEl[playerId].textContent = name;
 }
 
@@ -31,11 +32,24 @@ function setTeams(teams = [], logo, score = []) {
     for (let i = 0; i < 2; i++) {
         teamImgEl[i].src = logo[i];
         teamNameEl[i].textContent = teams[i];
-        teamScoreEl[i].textContent = score[i];
+        teamScoreEl[i].textContent = score[i]; 
     }
 }
 
+function sizePseudo() {
+    // if peseudo is too long, reduce the font size
+    const pseudo = document.querySelectorAll("thead th:not(.spacer)");
+    console.log(pseudo);
+    pseudo.forEach(el => {
+        console.log(el.textContent.length);
+        if (el.textContent.length > 12) {
+            el.style.fontSize = `${ 2 - (el.textContent.length / 25) }rem`;
+        }
+    });
+}
+
 async function main() {
+    sizePseudo();
     const data = await fetch("http://localhost:80/api/db/ewc/stats")
     let jsonData = await data.json();
     jsonData = jsonData[0];
@@ -62,22 +76,23 @@ async function main() {
         }
         pStats.push(stats);
     };
-    pStats.sort((a, b) => b.team - a.team);
+    pStats.sort((a, b) =>   b.team - a.team).reverse();
 
-    const names = pStats.map(player => player.name);
+    let names = []
+    pStats.forEach(el => names.push(el.name));
     
     // remove team and name items from the array
-    pStats = pStats.map(player => {
+    pStats.map(player => {
         delete player.team;
         delete player.name;
         return player;
     });
 
     for (let i = 0; i < pStats.length; i++) {
-        setPlayerName(i, names[i]);
         setPlayerStats(i, pStats[i]);
+        setPlayerName(i, names[i]);
     }
-
+    sizePseudo();
 }
 
 await main();
