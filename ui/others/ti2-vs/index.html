@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <video src="/ui/others/ti2-vs/vs_sound.webm" autoplay type="video/webm"></video>
+    <div class="teamOne">
+        <img
+            src="https://idlcqblimgotmibuednf.supabase.co/storage/v1/object/public/avatars/1846c911-521b-4338-85c5-835132e1765e/teams_r9dcj7llev9q1ynlttyxd.png">
+    </div>
+    <div class="teamTwo">
+        <img src="https://idlcqblimgotmibuednf.supabase.co/storage/v1/object/public/avatars/1846c911-521b-4338-85c5-835132e1765e/teams_r9dcj7llev9q1ynlttyxd.png"
+            alt="">
+    </div>
+
+    <script type="module" src="/ui/others/ti2-vs/main.js"></script>
+</body>
+
+</html>
+
+<style>
+    @font-face {
+        font-family: 'Slenco';
+        src: url("/ui/others/ti2-vs/Slenco-Black.otf") format('opentype');
+    }
+
+    @keyframes slide-from-left {
+        0% {
+            transform: translate3d(-100%, 0, 0);
+            opacity: 1;
+        }
+
+        15% {
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        50% {
+            transform: translate3d(0, 0, 0);
+        }
+
+        85% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+        }
+
+        100% {
+            transform: translate3d(-100%, 0, 0);
+            opacity: 0;
+        }
+    }
+
+    @keyframes slide-from-right {
+        0% {
+            transform: translate3d(100%, 0, 0);
+            opacity: 1;
+
+        }
+
+        15% {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        50% {
+            transform: translate3d(0, 0, 0);
+        }
+
+        85% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+
+        }
+
+        100% {
+            transform: translate3d(100%, 0, 0);
+            opacity: 0;
+
+        }
+    }
+
+    .teamOne {
+        animation: slide-from-left 6s ease-in-out;
+    }
+
+    .teamTwo {
+        animation: slide-from-right 6s ease-in-out;
+    }
+
+    body {
+        font-family: 'Slenco', sans-serif;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 25em;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    img {
+        width: 12em;
+        height: 12em;
+    }
+
+    div {
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+        opacity: 0;
+    }
+</style>

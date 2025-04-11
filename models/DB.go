@@ -10,12 +10,14 @@ type DBTournament struct {
 }
 
 type DBTeam struct {
-	ID           int    `json:"id"`
-	Name         string `json:"name"`
-	Tag          string `json:"tag"`
-	LogoUrl      string `json:"logo_url"`
-	TournamentID int    `json:"tournament_id"`
-	CreatedAt    string `json:"created_at"`
+	ID      int    `json:"id"`
+	Name    string `json:"name"`
+	Tag     string `json:"tag"`
+	LogoUrl string `json:"logo_url"`
+}
+
+type DBFetchTeam struct {
+	TeamID DBTeam `json:"team_id"`
 }
 
 type DBMatch struct {
