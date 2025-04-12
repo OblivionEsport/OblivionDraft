@@ -1,5 +1,6 @@
 const teamOneImg = document.querySelectorAll("img")[0];
 const teamTwoImg = document.querySelectorAll("img")[1];
+const video = document.querySelector("video");
 
 
 async function main() {
@@ -7,7 +8,9 @@ async function main() {
     console.log(selected);
     teamOneImg.src = selected[0]["logoUrl"];
     teamTwoImg.src = selected[1]["logoUrl"];
-
+    setTimeout(() => {
+        video.play();
+    }, 4200);
 }
 
 async function getTeamInfo() {
