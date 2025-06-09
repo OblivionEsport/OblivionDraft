@@ -15,7 +15,8 @@ func CheckSetup() {
 
 	fmt.Println("Starting up...")
 	if _, err := os.Stat("./ui/"); os.IsNotExist(err) {
-		log.Fatalf("UI directory does not exist, try running '%s setup'", filename)
+		log.Printf("UI directory does not exist,running '%s setup' ...", filename)
+		Setup()
 	}
 	// check if the config file exists
 	if _, err := os.Stat("./teams.json"); os.IsNotExist(err) {
@@ -30,9 +31,19 @@ func CheckSetup() {
 	}
 	err := godotenv.Load(".env")
 	if err != nil {
-		log.Fatalf("Error loading .env file, try running '%s setup'", filename)
+		log.Printf("Error loading .env file, running '%s setup' ...", filename)
+		Setup()
+		err = godotenv.Load(".env")
+		if err != nil {
+			log.Fatalf("Error loading .env file, try running '%s setup'", filename)
+		}
 	}
 	if _, check := os.LookupEnv("API_KEY"); !check {
-		log.Fatalf("Invalid .env file, missing API_KEY value, try running '%s setup'", filename)
+		log.Printf("Invalid .env file, missing API_KEY value, running '%s setup' ...", filename)
+		Setup()
+		err = godotenv.Load(".env")
+		if err != nil {
+			log.Fatalf("Error loading .env file, try running '%s setup'", filename)
+		}
 	}
 }
