@@ -30,7 +30,7 @@ Please make sure you have the necessary permissions to create files and director
 			panic(err)
 		}
 		defer file.Close()
-		file.WriteString("{\"teams\": [],\"selected\": [], \"matchID\":\"\"}")
+		file.WriteString("{\"teams\": [],\"selected\": [], \"matchID\":\"\", \"fearless\": [[],[]]}")
 	}
 
 	//download the latest version of the overlay and admin
