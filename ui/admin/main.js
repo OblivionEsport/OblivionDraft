@@ -33,6 +33,19 @@ fetch('/api/admin/teams/full')
         });
     });
 
+async function resetFearless() {
+    const response = await fetch('/api/admin/teams/fearless', {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        console.log('Fearless reset successfully!');
+        sendToast('Fearless reset successfully!', 'success');
+    } else {
+        console.error('Failed to reset Fearless.');
+        sendToast('Failed to reset Fearless.', 'alert');
+    }
+}
+
 async function saveTeamSettings(el) {
     const teamDiv = el.parentElement.parentElement.parentElement;
     const inputs = teamDiv.querySelectorAll('input');

@@ -210,7 +210,7 @@ new Chart(ctx, {
             cubicInterpolationMode: 'monotone',
             pointStyle: false,
             borderColor: 'black',
-            fill: { "above": "#6586ffa0", "below": "#eb0808a0", "target": { "value": 0 } },
+            fill: { "above": "#804795a0", "below": "#D04592a0", "target": { "value": 0 } },
             borderWidth: 1,
         }]
 

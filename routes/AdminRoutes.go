@@ -13,6 +13,8 @@ func AdminRoutes(app *fiber.App) {
 	teams.Get("/full", api.TeamsFull)
 	teams.Get("/selected", api.GetTeamsSelected)
 	teams.Get("/delete/:name", api.TeamsDelete)
+	teams.Get("/fearless", api.GetFearless)
+	teams.Delete("/fearless", api.DeleteFearless)
 
 	teams.Post("/add", api.TeamsAdd)
 	teams.Post("/selected", api.SetTeamsSelected)

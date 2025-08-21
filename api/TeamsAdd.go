@@ -17,7 +17,6 @@ func TeamsAdd(c *fiber.Ctx) error {
 			return c.SendStatus(404)
 		}
 		for _, team := range *teams {
-			println(&teams)
 			_, err := utils.AddTeam(&team)
 			if err != nil {
 				log.Println(err)

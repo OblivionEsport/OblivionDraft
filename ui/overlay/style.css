@@ -90,6 +90,15 @@
     grid-template-rows: 1fr;
 }
 
+.fearlessBans {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2px;
+    row-gap: 2px;
+    grid-template-rows: 1fr;
+    width: 100%;
+}
+
 /* Match Info */
 
 #timer {
@@ -102,7 +111,8 @@
     font-size: xx-large;
     color: white;
     font-family: 'LoL-Bold';
-    margin-top: 200%;
+    margin-top: 43px;
+    margin-bottom: 44px;
     /* visibility: hidden; */
 }
 

@@ -17,6 +17,7 @@ type TeamFile struct {
 	Teams    []Team   `json:"teams"`
 	Selected []string `json:"selected"`
 	MatchID  string   `json:"matchID"`
+	Fearless [][]int  `json:"fearless"` // Two-dimensional slice for fearless teams
 }
 
 func ReadTeamsFile() (TeamFile, error) {

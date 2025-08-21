@@ -118,3 +118,15 @@ func ResetTeams() error {
 	}
 	return nil
 }
+
+func DeleteFearlessBans() error {
+	teams, err := models.ReadTeamsFile()
+	if err != nil {
+		return err
+	}
+	err = models.SaveTeamsFile(models.TeamFile{Teams: teams.Teams, Selected: teams.Selected, MatchID: teams.MatchID, Fearless: [][]int{{}, {}}})
+	if err != nil {
+		return err
+	}
+	return nil
+}

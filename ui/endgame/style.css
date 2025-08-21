@@ -2,8 +2,10 @@
     --table-bar-size: 400px;
     --bans-size: 42px;
     --player-icon-size: 50px;
-    --team-two-color: #eb0808;
-    --team-one-color: #6586ff;
+    --team-two-color: #D04592;
+    --team-one-color: #804795;
+    /* --team-two-color: #eb0808;
+    --team-one-color: #6586ff; */
 }
 
 @font-face {

@@ -208,13 +208,23 @@ async function updateInfo() {
     let bansTeam2 = document.getElementById("bansTeam2").children;
     for (let i = 0; i < bansTeam1.length; i++) {
         if (data["myTeamBans"][i] != bansTeam1[i].dataset.championId) {
-            bansTeam1[i].dataset.championId = data["myTeamBans"][i];
+            bansTeam1[i].dataset.championId = data["myTeamBans"][i] || "";
         }
         if (data["theirTeamBans"][i] != bansTeam2[i].dataset.championId) {
-            bansTeam2[i].dataset.championId = data["theirTeamBans"][i];
+            bansTeam2[i].dataset.championId = data["theirTeamBans"][i] || "";
         }
     }
     showBan();
+
+    resp = await fetch("/api/admin/teams/fearless");
+    data = await resp.json();
+    let fearlessBans = document.getElementsByClassName("fearlessBans");
+    for (let i = 0; i < fearlessBans.length; i++) {
+        for (let j = 0; j < fearlessBans[i].children.length; j++) {
+            fearlessBans[i].children[j].dataset.championId = data[i][j] || "";
+        }
+    }
+    showFearless();
 }
 
 async function showBan() {
@@ -223,17 +233,29 @@ async function showBan() {
 
     for (let i = 0; i < bansTeam1.length; i++) {
         let champID = bansTeam1[i].dataset.championId;
+        if (!champID) continue; // Skip if no champion ID is set
         data = await getPlayerInfo(0, champID);
         if (bansTeam1[i].style.backgroundImage != `url('${data['iconURL']}')`)
             bansTeam1[i].style.backgroundImage = `url('${data['iconURL']}')`;
     }
     for (let i = 0; i < bansTeam2.length; i++) {
         let champID = bansTeam2[i].dataset.championId;
+        if (!champID) continue; // Skip if no champion ID is set
         data = await getPlayerInfo(0, champID);
         if (bansTeam2[i].style.backgroundImage != `url('${data['iconURL']}')`)
             bansTeam2[i].style.backgroundImage = `url('${data['iconURL']}')`;
     }
+}
 
+async function showFearless() {
+    let fearless = document.getElementsByClassName("fearless");
+    for (let i = 0; i < fearless.length; i++) {
+        let champID = fearless[i].dataset.championId;
+        if (!champID) continue; // Skip if no champion ID is set
+        data = await getPlayerInfo(0, champID);
+        if (fearless[i].style.backgroundImage != `url('${data['iconURL']}')`)
+            fearless[i].style.backgroundImage = `url('${data['iconURL']}')`;
+    }
 }
 
 async function getPlayerInfo(id, champID) {

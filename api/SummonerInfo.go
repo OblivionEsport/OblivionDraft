@@ -11,7 +11,6 @@ func SummonerInfo(c *fiber.Ctx) error {
 	g := c.Locals("getter").(models.LcuGetter)
 
 	championID := c.Query("championID")
-	println(championID)
 	if championID == "" {
 		return c.SendStatus(404)
 	}
